@@ -12,22 +12,45 @@ function App() {
     const targetClass = event.target.className;
 
     if(targetClass === 'homeButtons__touchdown'){
-    setHomeTeamScore(homeTeamScore + 7);
+    setHomeTeamScore(homeTeamScore + 10);
     } else if (targetClass === 'homeButtons__fieldGoal') {
-      setHomeTeamScore(homeTeamScore + 3);
+      setHomeTeamScore(homeTeamScore + 150);
     } else if (targetClass === 'awayButtons__touchdown') {
-      setAwayTeamScore(awayTeamScore + 7);
+      setAwayTeamScore(awayTeamScore + 10);
     } else if (targetClass === 'awayButtons__fieldGoal') {
-      setAwayTeamScore(awayTeamScore + 3);
+      setAwayTeamScore(awayTeamScore + 150);
     }
   }
 
+  
+  let scoreboardBackground ={
+    background: '#7F0909'
+  };
+
+  let ravenclaw = {
+    background: '#000A90',
+    color: '#946B2D',
+    // borderRadius: '20%',
+    width: '75%',
+    fontSize: '115%',
+  }
+
+  let slytherin = {
+    background: '#0D6217',
+    color: '#AAAAAA',
+    // borderRadius: '20%',
+    width: '75%',
+    fontSize: '115%',
+
+  }
+
+
   return (
     <div className="container">
-      <section className="scoreboard">
+      <section className="scoreboard" style={scoreboardBackground}>
         <div className="topRow">
           <div className="home">
-            <h2 className="home__name">Lions</h2>
+            <h2 className="home__name" style={ravenclaw}>Ravenclaw</h2>
 
             {/* TODO STEP 3 - We need to change the hardcoded values in these divs to accept dynamic values from our state. */}
 
@@ -35,7 +58,7 @@ function App() {
           </div>
           <div className="timer">00:03</div>
           <div className="away">
-            <h2 className="away__name">Tigers</h2>
+            <h2 className="away__name"style={slytherin}>Slytherin</h2>
             <div className="away__score">{awayTeamScore}</div>
           </div>
         </div>
@@ -44,12 +67,12 @@ function App() {
       <section className="buttons">
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
-          <button className="homeButtons__touchdown" onClick={updateScore}>Home Touchdown</button>
-          <button className="homeButtons__fieldGoal" onClick={updateScore}>Home Field Goal</button>
+          <button className="homeButtons__touchdown" onClick={updateScore}>Home Goal</button>
+          <button className="homeButtons__fieldGoal" onClick={updateScore}>Home Caught Golden Snitch</button>
         </div>
         <div className="awayButtons">
-          <button className="awayButtons__touchdown" onClick={updateScore}>Away Touchdown</button>
-          <button className="awayButtons__fieldGoal" onClick={updateScore}>Away Field Goal</button>
+          <button className="awayButtons__touchdown" onClick={updateScore}>Away Goal</button>
+          <button className="awayButtons__fieldGoal" onClick={updateScore}>Away Caught Golden Snitch</button>
         </div>
       </section>
     </div>
